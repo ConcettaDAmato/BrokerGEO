@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 // to get project version from command line, just type
 // $ gradle -PprojVersion=<version_number> build
