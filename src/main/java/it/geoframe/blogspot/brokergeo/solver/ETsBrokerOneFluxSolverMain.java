@@ -18,6 +18,9 @@
  */
 package it.geoframe.blogspot.brokergeo.solver;
 import it.geoframe.blogspot.brokergeo.methods.*;
+
+import java.util.ArrayList;
+
 import it.geoframe.blogspot.brokergeo.data.*;
 import oms3.annotations.Author;
 import oms3.annotations.Description;
@@ -47,6 +50,10 @@ public class ETsBrokerOneFluxSolverMain {
 	
 	@In
 	public boolean useWaterStress = true;
+	
+	@Description("ArrayList of variable to be stored in the buffer writer")
+	@Out
+	public ArrayList<double[]> outputToBuffer;
 	
 	
 	/////////////////////////////////////////////////////////////////////////////
@@ -82,6 +89,8 @@ public class ETsBrokerOneFluxSolverMain {
 			variables.zR = variables.totalDepth + input.etaR;
 			//variables.zE = variables.totalDepth + input.etaE;
 			
+			outputToBuffer = new ArrayList<double[]>();
+			
 		}	
 		
 		if (input.representativeTsModel.equalsIgnoreCase("AverageWaterWeightedMethod")  && useWaterStress == false) {
@@ -91,7 +100,8 @@ public class ETsBrokerOneFluxSolverMain {
 		if (input.representativeTsModel.equalsIgnoreCase("RootWaterWeightedMethod")  && useWaterStress == false) {
 			System.out.print("\nWARNING: the flux is splitted according the water stress factor, but evapotranspiration is not water stressed");}
 			
-			
+		outputToBuffer.clear();
+		
 		variables.StressedETs = computedTs.computeStressedETs(input.GnT,input.transpiration,variables.zR);
 		//variables.evaporations = computedEs.computeStressedETs(input.GnE,input.evaporation,variables.zE);
 		
@@ -103,14 +113,16 @@ public class ETsBrokerOneFluxSolverMain {
 		//evaporations = variables.evaporations;
 		
 		
-		
+		outputToBuffer.add(variables.StressedETs);
 		//System.out.println("\n\nEvaporations = "+Arrays.toString(evaporations));
 		//System.out.println("\n\nTranspirations = "+Arrays.toString(transpirations));
 		//System.out.println("\n\nStressedETs = "+Arrays.toString(StressedETs));
 		System.out.print("\nEnd ETsBrokerSolverMain");
 		//System.out.println("z = "+Arrays.toString(z));
 		//System.out.println("\n\nStressedET  = "+ StressedET);
-		variables.step=step;
+		
 		step++;
+		variables.step=step;
+		
 	}
 }
