@@ -55,6 +55,10 @@ public class ETsBrokerOneFluxSolverMain {
 	@Out
 	public ArrayList<double[]> outputToBuffer;
 	
+	@In
+	public boolean  doProcess6;
+	@Out
+	public boolean  doProcess7;
 	
 	/////////////////////////////////////////////////////////////////////////////
 	
