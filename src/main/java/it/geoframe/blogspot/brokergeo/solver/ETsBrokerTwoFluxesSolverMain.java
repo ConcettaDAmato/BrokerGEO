@@ -18,6 +18,9 @@
  */
 package it.geoframe.blogspot.brokergeo.solver;
 import it.geoframe.blogspot.brokergeo.methods.*;
+
+import java.util.ArrayList;
+
 import it.geoframe.blogspot.brokergeo.data.*;
 import oms3.annotations.Author;
 import oms3.annotations.Description;
@@ -57,6 +60,15 @@ public class ETsBrokerTwoFluxesSolverMain {
 	@In
 	public boolean useWaterStress = true;
 	
+	@Description("ArrayList of variable to be stored in the buffer writer")
+	@Out
+	public ArrayList<double[]> outputToBuffer;
+	
+	@In
+	public boolean  doProcess6;
+	@Out
+	public boolean  doProcess7;
+	
 	
 	/////////////////////////////////////////////////////////////////////////////
 	
@@ -91,6 +103,8 @@ public class ETsBrokerTwoFluxesSolverMain {
 			variables.zR = variables.totalDepth + input.etaR;
 			variables.zE = variables.totalDepth + input.etaE;
 			
+			outputToBuffer = new ArrayList<double[]>();
+			
 		}	
 
 		if (input.representativeTsModel.equalsIgnoreCase("AverageWaterWeightedMethod")  && useWaterStress == false) {
@@ -106,11 +120,11 @@ public class ETsBrokerTwoFluxesSolverMain {
 		if (input.representativeEsModel.equalsIgnoreCase("RootWaterWeightedMethod")  && useWaterStress == false) {
 			System.out.print("\nWARNING: the flux is splitted according the water stress factor, but evaporation is not water stressed");}
 		
-		
+		outputToBuffer.clear();
 		
 		variables.transpirations = computedTs.computeStressedETs(input.GnT,input.transpiration,variables.zR);
 		variables.evaporations = computedEs.computeStressedETs(input.GnE,input.evaporation,variables.zE);
-		
+
 		for(int i = 0; i<= variables.transpirations.length-1; i=i+1) {
 			variables.StressedETs [i] = variables.evaporations[i] + variables.transpirations[i];}
 		
@@ -120,11 +134,13 @@ public class ETsBrokerTwoFluxesSolverMain {
 		
 		System.out.print("\nEnd ETsBrokerSolverMain");
 		
+		outputToBuffer.add(variables.StressedETs);
 		
 		//System.out.println("z = "+Arrays.toString(z));
 		//System.out.println("\n\nStressedET  = "+ StressedET);
 		
-		variables.step=step;
 		step++;
+		variables.step=step;
+		
 	}
 }

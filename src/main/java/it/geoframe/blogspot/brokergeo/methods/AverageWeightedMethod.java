@@ -50,6 +50,7 @@ public class AverageWeightedMethod extends SplittedETs{
 		variables = ProblemQuantities.getInstance();
 		input = InputData.getInstance();
 		variables.control=0;
+		variables.N = 0; 
 		
 		//if (input.etaRef == 0.0) {variables.zRef = 0;}
 			//variables.N = variables.NUM_CONTROL_VOLUMES-2;} // NON SONO SICURA SU QUESTO CICLO IF 
