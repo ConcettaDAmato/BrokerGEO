@@ -52,14 +52,21 @@ public class SizeWaterWeightedMethod extends SplittedETs {
 			if (variables.etaRef== 0 ) {variables.fluxRefs[i] = 0;}
 			
 			else {		
-				if (input.z[i] > zRef) {					
+				if (input.z[i] >= zRef) {					
 					variables.fluxRefs[i]=((fluxRef*(input.g[i]* input.deltaZ[i]))/(variables.etaRef))/Gn[0];} 
 				else{variables.fluxRefs[i] = 0;}}
 			
 			variables.control = variables.control + variables.fluxRefs[i];
 		}
 		//if (variables.control == fluxRef) { System.out.println("\n\nControllo su fluxs Size corretto");}
-		if (variables.control<fluxRef + 1 * pow(10,-8) || variables.control > fluxRef - 1 * pow(10,-8)) { System.out.println("\n\nControllo su fluxs Size corretto");}
+		//if (variables.control<fluxRef + 1 * pow(10,-8) || variables.control > fluxRef - 1 * pow(10,-8)) { System.out.println("\n\nControllo su fluxs Size corretto");}
+		if((variables.control>=fluxRef - 1 * pow(10,-8))&&(variables.control<=fluxRef + 1 * pow(10,-8))) {
+		      System.out.println("\n\nControllo su fluxs Size corretto\"");
+		    }
+		    else {
+		    	System.out.println("\n\nERROR in splitting ET.\nSimulation ended");
+			      System.exit(0);
+		    }
 		
 		return variables.fluxRefs.clone();	
 	}

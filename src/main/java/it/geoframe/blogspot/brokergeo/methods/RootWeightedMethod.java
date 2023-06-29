@@ -48,28 +48,36 @@ public class RootWeightedMethod extends SplittedETs {
 		variables = ProblemQuantities.getInstance();
 		input = InputData.getInstance();
 		variables.control=0;
+		variables.sumRootDensity =0;
 		
-		if(variables.step==0){
-		for (int i = 0; i <= input.rootIC.length-2; i++) {
-			variables.sumRootIC = variables.sumRootIC + input.rootIC[i];
+		for (int i = 0; i <= variables.NUM_CONTROL_VOLUMES-2; i++) {
+			if (input.z[i]  >= zRef) {
+			variables.sumRootDensity = variables.sumRootDensity + input.rootDensity[i];}
 			//variables.sumRootWaterStress = variables.sumRootWaterStress + (input.rootIC[i]*input.g[i]);	
-		}}
+		}
 		
-		if (input.evapotranspiration != 0 && input.etaRef == 0.0) {System.out.println("\n\nError: Please enter the root depth.\nSimulation ended");
+		if (input.evapotranspiration != 0 && input.etaR == 0.0) {System.out.println("\n\nError: Please enter the root depth.\nSimulation ended");
 			System.exit(0);}
 			
 		for (int i = 0; i <= variables.NUM_CONTROL_VOLUMES-2; i++) {
 			
 					
-				if (input.z[i] > zRef) {					
-					variables.fluxRefs[i]=(fluxRef*(input.rootIC[i]/variables.sumRootIC));}
+				if (input.z[i] >= zRef) {					
+					variables.fluxRefs[i]=(fluxRef*(input.rootDensity[i]/variables.sumRootDensity));}
 				else{variables.fluxRefs[i] = 0;}
 			variables.control = variables.control + variables.fluxRefs[i];
 			
 		}
 		
 		//if (variables.control == fluxRef) { System.out.println("\n\nControllo su fluxs Root corretto");}
-		if (variables.control < fluxRef + 1 * pow(10,-8) || variables.control > fluxRef - 1 * pow(10,-8)) { System.out.println("\n\nControllo su fluxs Root corretto");}
+		//if (variables.control < fluxRef + 1 * pow(10,-8) || variables.control > fluxRef - 1 * pow(10,-8)) { System.out.println("\n\nControllo su fluxs Root corretto");}
+		if((variables.control>=fluxRef - 1 * pow(10,-8))&&(variables.control<=fluxRef + 1 * pow(10,-8))) {
+		      System.out.println("\n\nControllo su fluxs Root corretto\"");
+		    }
+		    else {
+		      System.out.println("\n\nERROR in splitting ET.\nSimulation ended");
+		      System.exit(0);
+		    }
 		
 		return variables.fluxRefs.clone();	
 	}

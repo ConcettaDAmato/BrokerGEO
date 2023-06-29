@@ -63,7 +63,7 @@ public abstract class SplittedETs {
 	/*
 	 * This method compute the evaporation and transpiration in each control volumes of the whole column of soil given 
 	 * the total evaporation and transpiration from the Evapotranspiration Component
-	 * @param g, @param Gn, @param fluxRef, @param zRef, @param rootIC, @param sumRootIC
+	 * @param Gn, @param fluxRef, @param zRef
 	 *
 	 * @return fluxRefs
 	 */

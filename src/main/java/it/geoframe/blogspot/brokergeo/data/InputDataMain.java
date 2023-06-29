@@ -1,5 +1,4 @@
 package it.geoframe.blogspot.brokergeo.data;
-
 import oms3.annotations.Author;
 import oms3.annotations.Description;
 import oms3.annotations.Execute;
@@ -36,6 +35,11 @@ public class InputDataMain {
 	@Unit("m")
 	public double etaE;
 	
+	@Description("Depth of a generic layer.")
+	@In 
+	@Unit("m")
+	public double etaRef;
+	
 	@Description("z coordinate read from grid NetCDF file.")
 	@In
 	@Unit("m")
@@ -51,12 +55,17 @@ public class InputDataMain {
 	@Unit("mm/s")
 	public double evaporation;
 	
+	@Description("The stressed flux from a generic model.")
+	@In
+	@Unit("mm/s")
+	public double flux;
+	
 	@Description("Vector containing the length of each control volume")
 	@In
 	@Unit("m")
 	public double[] deltaZ;
 	
-	@Description("Evaporation from each control volume can be evaluated in different way"
+	/*@Description("Evaporation from each control volume can be evaluated in different way"
 			    + " Average method --> AverageMetod"
 			    + " Weighted average method --> SizeWightedMetod")
 	@In
@@ -69,6 +78,10 @@ public class InputDataMain {
 	@In
 	public String representativeTsModel;
 	
+	@In
+	public String representativeModel;*/
+	
+	
 	@Description("The stress factor for each control volume")
 	@In
 	@Unit("-")
@@ -80,26 +93,32 @@ public class InputDataMain {
 	@Unit("-")
 	public double[] GnT;
 	
-	@Description("Vector of Initial Condition for root density")
-	@In
-	@Unit("-")
-	public double[] rootIC;
 	
 	@Description("Vector of G and n, for evaporation")
 	@In
 	@Unit("-")
 	public double[] GnE;
 	
+	@Description("Vector of G and n, for a generic flux")
 	@In
-	public boolean  doProcess5;
+	@Unit("-")
+	public double[] Gn;
+	
+	@Description("Vector of root density")
+	@In
+	@Unit("-")
+	public double [] rootDensity;
+	
+	@In
+	public boolean  doProcess6;
 	
 	@Out
-	public boolean  doProcess6;
+	public boolean  doProcess7;
 
 
 	private InputData input;
 	
-
+	
 	
 	@Execute
 	public void process() throws Exception {
@@ -108,17 +127,22 @@ public class InputDataMain {
 		
 		input.etaR = etaR;
 		input.etaE = etaE;
+		input.etaRef = etaRef;
 		input.z = z;
 		input.transpiration = transpiration;
 		input.evaporation = evaporation;
+		input.flux = flux;
 		input.deltaZ = deltaZ;
-		input.representativeEsModel = representativeEsModel;
-		input.representativeTsModel = representativeTsModel;
+		
 		input.g = g;
 		input.GnT = GnT;
 		input.GnE = GnE;
-		input.rootIC = rootIC;
-		
+		input.Gn = Gn;
+		//input.rootDensityIC = rootIC;
+		input.rootDensity = rootDensity;
+		//input.rootDensityModel = rootDensityModel;
+		//input.growthRateRoot = growthRateRoot;
+
 		System.out.print("\nEnd InputDataMain");
 	}
 
