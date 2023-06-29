@@ -26,7 +26,7 @@ import it.geoframe.blogspot.brokergeo.data.ProblemQuantities;
  * @author Concetta D'Amato
  */
 
-public class FactoryETs {
+public class SplittedETsFactory {
 	/**
 	 * Creates a new StressedETs object.
 	 * @param type name of the Evaporation or Transpiration splitting model

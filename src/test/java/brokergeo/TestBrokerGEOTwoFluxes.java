@@ -40,6 +40,7 @@ public class TestBrokerGEOTwoFluxes {
 		double[] g = {0.49853778058804915, 0.49853778058804915, 0.7751738855516915, 0.9332516598166297, 0.8542127726841605, 1.0, 1.0, 1.0, 1.0, 1.0};
 		double[] GnT = {0.9453297897565602,8};
 		double[] GnE = {0.9453297897565602,8};
+		double [] rootDensity= {0.3, 0.4, 0.6, 0.7, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0};
 		
 		ETsBrokerTwoFluxesSolverMain ETsBrokerSolver = new ETsBrokerTwoFluxesSolverMain();  
 		InputDataMain Input = new InputDataMain();
@@ -49,15 +50,14 @@ public class TestBrokerGEOTwoFluxes {
 		readNetCDF.read();
 
 		Input.z = readNetCDF.z;
-		Input.rootIC = readNetCDF.rootIC; 
 		Input.etaR = -0.8;
 		Input.etaE = -0.8;
 		Input.deltaZ = readNetCDF.spaceDelta;
 		Input.transpiration = transpiration;
 		Input.evaporation = evaporation;
-		Input.representativeEsModel = "AverageWeightedMethod"; //SizeWaterWeightedMethod, AverageWaterWeightedMethod //AverageWeightedMethod, SizeWeightedMetod
-		Input.representativeTsModel = "RootWeightedMethod"; //SizeWaterWeightedMethod, AverageWaterWeightedMethod, RootWaterWeightedMethod //AverageWeightedMethod, SizeWeightedMetod, RootWeightedMethod
-		
+		ETsBrokerSolver.representativeEsModel = "AverageWeightedMethod"; //SizeWaterWeightedMethod, AverageWaterWeightedMethod //AverageWeightedMethod, SizeWeightedMetod
+		ETsBrokerSolver.representativeTsModel = "RootWeightedMethod"; //SizeWaterWeightedMethod, AverageWaterWeightedMethod, RootWaterWeightedMethod //AverageWeightedMethod, SizeWeightedMetod, RootWeightedMethod
+		Input.rootDensity = rootDensity;
 		ETsBrokerSolver.useWaterStress = false;
 		Input.g = g;
 		

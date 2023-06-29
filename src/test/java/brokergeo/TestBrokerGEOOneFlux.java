@@ -39,6 +39,7 @@ public class TestBrokerGEOOneFlux {
 		double[] g = {0.49853778058804915, 0.49853778058804915, 0.7751738855516915, 0.9332516598166297, 0.8542127726841605, 1.0, 1.0, 1.0, 1.0, 1.0};
 		double[] GnT = {0.9453297897565602,8};
 		double etaR = -0.8;
+		double [] rootDensity= {0.3, 0.4, 0.6, 0.7, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0};
 		
 		
 		ETsBrokerOneFluxSolverMain ETsBrokerSolver = new ETsBrokerOneFluxSolverMain();  
@@ -47,20 +48,20 @@ public class TestBrokerGEOOneFlux {
 		readNetCDF.richardsGridFilename = pathGrid;
 		
 		readNetCDF.read();
-		Input.representativeTsModel = "RootWeightedMethod"; //AverageWaterWeightedMethod, SizeWaterWeightedMetod, RootWaterWeightedMethod
+		ETsBrokerSolver.representativeTsModel = "RootWeightedMethod"; //AverageWaterWeightedMethod, SizeWaterWeightedMetod, RootWaterWeightedMethod
 																//AverageWeightedMethod, SizeWeightedMetod, RootWeightedMethod
 
 		Input.z = readNetCDF.z;
-		Input.rootIC = readNetCDF.rootIC; 
 		Input.etaR = etaR;
 		Input.deltaZ = readNetCDF.spaceDelta;
 		Input.transpiration = transpiration;
+		Input.rootDensity = rootDensity;
 		Input.g = g;
 		Input.GnT = GnT;
-		ETsBrokerSolver.useWaterStress = false; //Quando si usano i metodi semplici dovrebbe essere in false
+		ETsBrokerSolver.useWaterStress = false; //Quando si usano i metodi semplici deve essere in false
 		
 		Input.process();
 		ETsBrokerSolver.solve();
-	}
+		}
 }
 

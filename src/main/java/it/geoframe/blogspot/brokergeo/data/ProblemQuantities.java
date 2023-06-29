@@ -18,7 +18,11 @@ public class ProblemQuantities {
 	
 	@Description("Sum of Initial Condition for root density")
 	@Unit("-")
-	public double sumRootIC;
+	public double sumRootDensity;
+	
+	//@Description("Vector of root density")
+	//@Unit("-")
+	//public double [] rootDensity;
 	
 	@Description("Number of control volume for domain discetrization")
 	@Unit ("-")
@@ -52,7 +56,7 @@ public class ProblemQuantities {
 	
 	public double control;
 	
-	@Description("Depth of the layer for SizeWaterWeightedMethod and SizeWeightedMethod")
+	@Description("Depth of the layer for SizeWaterWeightedMethod and SizeWeightedMethod  and for simplest Broker method")
 	@Unit("m") 
 	public double etaRef;
 

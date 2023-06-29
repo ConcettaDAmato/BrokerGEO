@@ -61,7 +61,7 @@ public class AverageWeightedMethod extends SplittedETs{
 		
 		for (int i = 0; i <= variables.NUM_CONTROL_VOLUMES-2; i++) {
 
-			if (input.z[i] > zRef){
+			if (input.z[i] >= zRef){
 					variables.fluxRefs[i]= fluxRef/variables.N;}
 				else {variables.fluxRefs[i] = 0;}
 			
@@ -72,8 +72,14 @@ public class AverageWeightedMethod extends SplittedETs{
 		
 		//if (variables.control == fluxRef) { System.out.println("\n\nControllo su fluxs Average corretto");}
 		
-		if (variables.control < fluxRef + 1 * pow(10,-8) || variables.control > fluxRef - 1 * pow(10,-8)) { System.out.println("\n\nControllo su fluxs Average corretto");}
-
+		//if (variables.control < fluxRef + 1 * pow(10,-8) || variables.control > fluxRef - 1 * pow(10,-8)) { System.out.println("\n\nControllo su fluxs Average corretto");}
+		if((variables.control>=fluxRef - 1 * pow(10,-8))&&(variables.control<=fluxRef + 1 * pow(10,-8))) {
+		      System.out.println("\n\nControllo su fluxs Average corretto\"");
+		    }
+		    else {
+		      System.out.println("\n\nERROR in splitting ET.\nSimulation ended");
+		      System.exit(0);
+		    }
 		
 		return variables.fluxRefs.clone();			
 	}
