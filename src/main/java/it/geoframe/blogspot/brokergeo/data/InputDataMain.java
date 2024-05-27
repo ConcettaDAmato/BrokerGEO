@@ -1,4 +1,6 @@
 package it.geoframe.blogspot.brokergeo.data;
+import java.util.Arrays;
+
 import oms3.annotations.Author;
 import oms3.annotations.Description;
 import oms3.annotations.Execute;
@@ -143,6 +145,9 @@ public class InputDataMain {
 		//input.rootDensityModel = rootDensityModel;
 		//input.growthRateRoot = growthRateRoot;
 
+		//System.out.println("\ninput.rootDensity  = "+Arrays.toString(input.rootDensity));
+		//System.out.println("\ninput.etaR  = "+ input.etaR);
+		
 		System.out.print("\nEnd InputDataMain");
 	}
 

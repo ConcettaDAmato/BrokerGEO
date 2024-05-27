@@ -18,12 +18,23 @@
  */
 package it.geoframe.blogspot.brokergeo.methods;
 
+import it.geoframe.blogspot.brokergeo.data.InputData;
+import it.geoframe.blogspot.brokergeo.data.ProblemQuantities;
+
 /**
  * The stressedETs abstract class.
  * @author Concetta D'Amato
  */
 
 public abstract class SplittedETs {
+	
+	public ProblemQuantities variables;
+	public InputData input;
+	
+	public SplittedETs() {
+		variables = ProblemQuantities.getInstance();
+		input = InputData.getInstance();
+	}
 	
 	//public double[] z;   			// z coordinate read from grid NetCDF file
 	//public double zR;    			// Depth of the root from the bottom

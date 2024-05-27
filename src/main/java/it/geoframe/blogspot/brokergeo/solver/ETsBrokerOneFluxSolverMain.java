@@ -112,9 +112,10 @@ public class ETsBrokerOneFluxSolverMain {
 
 		StressedETs = variables.StressedETs;
 		outputToBuffer.add(variables.StressedETs);
-		//System.out.println("\n\nEvaporations = "+Arrays.toString(evaporations));
-		//System.out.println("\n\nTranspirations = "+Arrays.toString(transpirations));
-		//System.out.println("\n\nStressedETs = "+Arrays.toString(StressedETs));
+		outputToBuffer.add(input.rootDensity);
+		outputToBuffer.add(variables.StressedETs);
+		outputToBuffer.add(variables.StressedETs);
+		
 		System.out.print("\nEnd ETsBrokerSolverMain");
 		
 		step++;
