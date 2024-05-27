@@ -32,8 +32,8 @@ import it.geoframe.blogspot.brokergeo.data.ProblemQuantities;
 
 public class RootWaterWeightedMethod extends SplittedETs {
 
-	private ProblemQuantities variables;
-	private InputData input;
+	//private ProblemQuantities variables;
+	//private InputData input;
 	
 	/** General constructor used to pass the value of variables */
 	//public RootWaterWeightedMethod (double[] z, double[] deltaZ, int NUM_CONTROL_VOLUMES, double totalDepth) {
@@ -43,8 +43,8 @@ public class RootWaterWeightedMethod extends SplittedETs {
 	
 	public double [] computeStressedETs (double[] Gn,double fluxRef, double zRef) {
 		
-		variables = ProblemQuantities.getInstance();
-		input = InputData.getInstance();
+		//variables = ProblemQuantities.getInstance();
+		//input = InputData.getInstance();
 		variables.control=0;
 		variables.sumRootWaterStress=0;
 		

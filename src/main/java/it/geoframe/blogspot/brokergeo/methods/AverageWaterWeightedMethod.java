@@ -31,8 +31,8 @@ import it.geoframe.blogspot.brokergeo.data.*;
 
 public class AverageWaterWeightedMethod extends SplittedETs{
 	
-	private ProblemQuantities variables;
-	private InputData input;
+	//private ProblemQuantities variables;
+	//private InputData input;
 
 	/** General constructor used to pass the value of variables */
 	//public AverageETs (double[] z, double[] deltaZ, int NUM_CONTROL_VOLUMES, double totalDepth) {
@@ -45,8 +45,8 @@ public class AverageWaterWeightedMethod extends SplittedETs{
 	
 	public double [] computeStressedETs (double[] Gn, double fluxRef, double zRef) {
 		
-		variables = ProblemQuantities.getInstance();
-		input = InputData.getInstance();
+		//variables = ProblemQuantities.getInstance();
+		//input = InputData.getInstance();
 		variables.control=0;
 		
 		for (int i = 0; i <= variables.NUM_CONTROL_VOLUMES-2; i++) {

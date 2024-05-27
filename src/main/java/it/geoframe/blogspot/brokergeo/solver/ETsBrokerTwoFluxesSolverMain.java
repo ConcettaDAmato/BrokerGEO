@@ -19,6 +19,8 @@
 package it.geoframe.blogspot.brokergeo.solver;
 import it.geoframe.blogspot.brokergeo.methods.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import it.geoframe.blogspot.brokergeo.data.*;
 import oms3.annotations.Author;
 import oms3.annotations.Description;
@@ -160,7 +162,7 @@ public class ETsBrokerTwoFluxesSolverMain {
 		//System.out.println("\n\nStressedET  = "+ StressedET);
 		//System.out.println("\ng  = "+Arrays.toString(input.g));
 		//System.out.println("\n\nsumRootWaterStress  = "+ variables.sumRootWaterStress);
-		//System.out.println("\n\ntranspirations  = "+ Arrays.toString(variables.transpirations));
+	//System.out.println("\n\nvariables.StressedETs  = "+ Arrays.toString(variables.StressedETs));
 		
 		
 		System.out.print("\nEnd ETsBrokerSolverMain");
