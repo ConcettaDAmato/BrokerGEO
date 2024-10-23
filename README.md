@@ -1,7 +1,4 @@
 # BrokerGEO
-BrokerGEO is a Java-based modeling environment to split evapotranspiration flux according to the WHETGEO grid discretization
-
-# BrokerGEO
 BrokerGEO is a Java-based component within the GEOframe system that acts as a coupler, allowing different models, such as WHETGEO and GEOET, to exchange data dynamically. Its primary role is to split evaporation (Es) and transpiration (El) between the control volumes in which the soil column is discretised, ensuring mass and energy balance within the soil column.
 
 BrokerGEO facilitates the interaction between ET and water flow models by implementing different methods to split ET based on soil, water and root characteristics. This partitioning is critical for understanding how water is distributed between plant roots and soil surfaces under varying environmental conditions.
