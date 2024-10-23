@@ -5,9 +5,9 @@ BrokerGEO facilitates the interaction between ET and water flow models by implem
 
 The methods used by BrokerGEO for partitioning ET include:
 
-- AverageWaterWeightedMethod: Distributes the reference ET (ETref) based on an average of water stress factors across all soil layers.
-- SizeWaterWeightedMethod: Distributes ETref proportionally to the size of the control volumes in the soil.
-- RootWaterWeightedMethod: Distributes ETref based on the root density in each control volume, accounting for the role of roots in water uptake.
+- _AverageWaterWeightedMethod_: Distributes the reference ET (ETref) based on an average of water stress factors across all soil layers.
+- _SizeWaterWeightedMethod_: Distributes ETref proportionally to the size of the control volumes in the soil.
+- _RootWaterWeightedMethod_: Distributes ETref based on the root density in each control volume, accounting for the role of roots in water uptake.
 These methods are employed to ensure that the feedback loop between the soil water content and the ET process is accurately represented, allowing WHETGEO to adjust soil water potential based on the ET demands from GEOET.
 
 # Key Features
