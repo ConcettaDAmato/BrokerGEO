@@ -81,7 +81,7 @@ public class ETsBrokerOneGenericFluxSolverMain {
 		variables = ProblemQuantities.getInstance();
 		input = InputData.getInstance();
 		
-		
+
 		if(step==0){
 			input.representativeModel = representativeModel;
 			variables.NUM_CONTROL_VOLUMES = input.z.length;

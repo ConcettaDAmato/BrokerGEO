@@ -58,7 +58,7 @@ public class TestBrokerGEOTwoFluxes {
 		ETsBrokerSolver.representativeEsModel = "AverageWeightedMethod"; //SizeWaterWeightedMethod, AverageWaterWeightedMethod //AverageWeightedMethod, SizeWeightedMetod
 		ETsBrokerSolver.representativeTsModel = "RootWeightedMethod"; //SizeWaterWeightedMethod, AverageWaterWeightedMethod, RootWaterWeightedMethod //AverageWeightedMethod, SizeWeightedMetod, RootWeightedMethod
 		Input.rootDensity = rootDensity;
-		ETsBrokerSolver.useWaterStress = false;
+		ETsBrokerSolver.useWaterStress = false; //false, when you use simple methods
 		Input.g = g;
 		
 		Input.GnT = GnT;
