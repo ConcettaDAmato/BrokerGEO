@@ -48,7 +48,7 @@ public class TestBrokerGEOOneFlux {
 		readNetCDF.richardsGridFilename = pathGrid;
 		
 		readNetCDF.read();
-		ETsBrokerSolver.representativeTsModel = "RootWeightedMethod"; //AverageWaterWeightedMethod, SizeWaterWeightedMetod, RootWaterWeightedMethod
+		ETsBrokerSolver.representativeTsModel = "AverageWeightedMethod"; //AverageWaterWeightedMethod, SizeWaterWeightedMetod, RootWaterWeightedMethod
 																//AverageWeightedMethod, SizeWeightedMetod, RootWeightedMethod
 
 		Input.z = readNetCDF.z;
@@ -58,10 +58,16 @@ public class TestBrokerGEOOneFlux {
 		Input.rootDensity = rootDensity;
 		Input.g = g;
 		Input.GnT = GnT;
-		ETsBrokerSolver.useWaterStress = false; //Quando si usano i metodi semplici deve essere in false
+		
+		ETsBrokerSolver.useWaterStress = false;//false, when you use simple methods
+		
+
+		
 		
 		Input.process();
+		
 		ETsBrokerSolver.solve();
+		
 		}
 }
 

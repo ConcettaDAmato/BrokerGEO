@@ -126,7 +126,7 @@ public class InputDataMain {
 	public void process() throws Exception {
 		System.out.print("\n\nStart InputDataMain");
 		input = InputData.getInstance();
-		
+	
 		input.etaR = etaR;
 		input.etaE = etaE;
 		input.etaRef = etaRef;
